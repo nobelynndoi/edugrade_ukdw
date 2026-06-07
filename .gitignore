@@ -1,0 +1,6 @@
+target/
+*.db
+*.log
+.idea/workspace.xml
+.idea/tasks.xml
+out/
