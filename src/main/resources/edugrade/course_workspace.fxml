@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <left>
+        <VBox styleClass="sidebar">
+            <VBox spacing="4" styleClass="sidebar-logo">
+                <Label styleClass="sidebar-logo-text" text="EduGrade" />
+                <Label fx:id="subtitle" styleClass="sidebar-subtitle" />
+            </VBox>
+
+            <Label styleClass="sidebar-section" text="LEMBAR KERJA" />
+
+            <Button fx:id="mahasiswaBtn" alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" onAction="#handleMahasiswa" text="Data Mahasiswa">
+                <styleClass>
+                    <String fx:value="nav-btn" />
+                    <String fx:value="nav-btn-active" />
+                </styleClass>
+            </Button>
+
+            <Button fx:id="nilaiBtn" alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" onAction="#handleNilai" text="Input Nilai">
+                <styleClass>
+                    <String fx:value="nav-btn" />
+                </styleClass>
+            </Button>
+
+            <Button fx:id="laporanBtn" alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" onAction="#handleLaporan" text="Grafik Laporan">
+                <styleClass>
+                    <String fx:value="nav-btn" />
+                </styleClass>
+            </Button>
+
+            <Button alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" onAction="#handleKembali" text="Kembali ke Daftar Matkul">
+                <styleClass>
+                    <String fx:value="nav-btn" />
+                    <String fx:value="nav-btn-back" />
+                </styleClass>
+            </Button>
+
+            <Region VBox.vgrow="ALWAYS" />
+
+            <VBox alignment="CENTER" spacing="6" style="-fx-padding: 15; -fx-border-color: rgba(255,255,255,0.1); -fx-border-width: 1 0 0 0;">
+                <Label fx:id="userName" style="-fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold;" />
+                <Button alignment="CENTER" maxWidth="1.7976931348623157E308" onAction="#handleLogout" text="Logout">
+                    <styleClass>
+                        <String fx:value="nav-btn" />
+                        <String fx:value="nav-btn-logout" />
+                    </styleClass>
+                </Button>
+            </VBox>
+        </VBox>
+    </left>
+    
+    <center>
+        <StackPane fx:id="content" />
+    </center>
+</BorderPane>

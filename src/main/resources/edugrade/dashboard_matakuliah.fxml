@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <padding>
+        <Insets bottom="0" left="0" right="0" top="0"/>
+    </padding>
+
+    <center>
+        <VBox>
+            <!-- topBar -->
+            <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-background-color: white; -fx-padding: 12 20 12 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 5, 0, 0, 2);">
+                <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #1A237E;" text="EduGrade - Dashboard" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label fx:id="userLabel" styleClass="user-badge" />
+                <Button onAction="#handleLogout" styleClass="btn-danger" text="Logout" />
+            </HBox>
+
+            <!-- contentBox -->
+            <VBox spacing="16" styleClass="content-area" VBox.vgrow="ALWAYS">
+                <!-- Card 1: Daftar Mata Kuliah Diampu -->
+                <VBox spacing="12" styleClass="card" VBox.vgrow="ALWAYS">
+                    <Label styleClass="section-title" text="Daftar Mata Kuliah Diampu" />
+                    <TableView fx:id="table" VBox.vgrow="ALWAYS">
+                        <columnResizePolicy><TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/></columnResizePolicy>
+                        <columns>
+                            <TableColumn fx:id="colKode" text="Kode MK" />
+                            <TableColumn fx:id="colNama" text="Nama Mata Kuliah" />
+                            <TableColumn fx:id="colSks" text="SKS" />
+                            <TableColumn fx:id="colSemester" text="Semester" />
+                            <TableColumn fx:id="colTahun" text="Tahun Ajaran" />
+                            <TableColumn fx:id="colKelas" text="Kelas" />
+                        </columns>
+                    </TableView>
+                </VBox>
+
+                <!-- Card 2: Form Mata Kuliah -->
+                <VBox spacing="12" styleClass="card">
+                    <Label styleClass="section-title" text="Form Mata Kuliah" />
+                    <GridPane hgap="10" vgap="12">
+                        <Label styleClass="form-label" text="Kode" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <TextField fx:id="kode" promptText="Kode MK" styleClass="text-field-style" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                        
+                        <Label styleClass="form-label" text="Nama" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                        <TextField fx:id="nama" promptText="Nama mata kuliah" styleClass="text-field-style" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+
+                        <Label styleClass="form-label" text="SKS" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                        <TextField fx:id="sks" promptText="SKS" styleClass="text-field-style" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        
+                        <Label styleClass="form-label" text="Semester" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <ComboBox fx:id="semester" styleClass="combo-style" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="Gasal" />
+                                    <String fx:value="Genap" />
+                                </FXCollections>
+                            </items>
+                            <value>
+                                <String fx:value="Gasal" />
+                            </value>
+                        </ComboBox>
+
+                        <Label styleClass="form-label" text="Tahun" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                        <TextField fx:id="tahun" promptText="2025/2026" styleClass="text-field-style" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        
+                        <Label styleClass="form-label" text="Kelas" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <TextField fx:id="kelas" promptText="A, B, dll (opsional)" styleClass="text-field-style" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+
+                        <HBox spacing="10" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="3">
+                            <Button fx:id="tambah" onAction="#handleTambah" styleClass="btn-primary" text="Tambah Mata Kuliah" />
+                            <Button onAction="#handleBuka" styleClass="btn-secondary" text="Buka Mata Kuliah" />
+                            <Button onAction="#handleHapus" styleClass="btn-danger" text="Hapus Mata Kuliah" />
+                            <Button onAction="#handleBersih" styleClass="btn-secondary" text="Bersihkan" />
+                        </HBox>
+                    </GridPane>
+                </VBox>
+            </VBox>
+        </VBox>
+    </center>
+
+</BorderPane>
