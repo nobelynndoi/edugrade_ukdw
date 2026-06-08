@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="14" styleClass="content-area" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+
+    <GridPane fx:id="stats" hgap="14">
+        <!-- Stat cards will be injected or configured dynamically if we want, but we can do them statically if we bind later.
+             Since they require dynamic values, we can leave the GridPane empty and populate it from the controller,
+             OR we can define the VBoxes and inject the labels. Let's define them in FXML for cleaner separation! -->
+        <VBox styleClass="stat-card-blue" spacing="8" GridPane.columnIndex="0" GridPane.rowIndex="0">
+            <Label fx:id="lblTotalMhs" styleClass="stat-number" />
+            <Label styleClass="stat-label" text="Mahasiswa" />
+        </VBox>
+        <VBox styleClass="stat-card-green" spacing="8" GridPane.columnIndex="1" GridPane.rowIndex="0">
+            <Label fx:id="lblLulus" styleClass="stat-number" />
+            <Label styleClass="stat-label" text="Lulus" />
+        </VBox>
+        <VBox styleClass="stat-card-red" spacing="8" GridPane.columnIndex="2" GridPane.rowIndex="0">
+            <Label fx:id="lblTidakLulus" styleClass="stat-number" />
+            <Label styleClass="stat-label" text="Tidak Lulus" />
+        </VBox>
+        <VBox styleClass="stat-card-orange" spacing="8" GridPane.columnIndex="3" GridPane.rowIndex="0">
+            <Label fx:id="lblRataRata" styleClass="stat-number" />
+            <Label styleClass="stat-label" text="Rata-rata" />
+        </VBox>
+        <VBox styleClass="stat-card-blue" spacing="8" GridPane.columnIndex="4" GridPane.rowIndex="0">
+            <Label fx:id="lblPersenKelulusan" styleClass="stat-number" />
+            <Label styleClass="stat-label" text="Kelulusan" />
+        </VBox>
+    </GridPane>
+
+    <VBox spacing="12" styleClass="card">
+        <Label fx:id="lblGrafikTitle" styleClass="section-title" />
+        <BarChart fx:id="chart" legendVisible="false" prefHeight="360" title="Sebaran Grade Huruf">
+            <xAxis>
+                <CategoryAxis />
+            </xAxis>
+            <yAxis>
+                <NumberAxis />
+            </yAxis>
+        </BarChart>
+    </VBox>
+
+    <VBox spacing="12" styleClass="card">
+        <Label styleClass="section-title" text="Persentase Kelulusan" />
+        <HBox spacing="16">
+            <ProgressIndicator fx:id="indicator" prefHeight="120" prefWidth="120" />
+            <Label fx:id="lblPercentIndicator" styleClass="section-title" />
+        </HBox>
+    </VBox>
+
+</VBox>
